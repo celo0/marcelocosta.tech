@@ -22,8 +22,10 @@ theme = "nightfall"
   user = "celo0"
   hostname = "marcelocosta.tech"
     [params.author]
-        name = "Marcelo Costa"
-        email = "contactme@marcelocosta.tech"
+      name = "Marcelo Costa"
+      email = "contactme@marcelocosta.tech"
+    [params.styles]
+      color = "orange"
 
 readingTime = true  # Show reading time on post page
 published = true  # Show published data on post page

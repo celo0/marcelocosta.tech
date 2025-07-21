@@ -2,10 +2,11 @@
 title: "Fixing Reverse Proxy for Plex with Nginx"
 date: 2025-07-21
 tags: ["nginx", "plex", "reverse-proxy"]
+description: "Nginx subfiltering files"
 ---
 
 I started hosting my own media using plex, and I didn't wanted to have one url for each service, so I thought:
- 
+
 _'Why don't I put everything under media.mydomain.com?'_
 
 Then I started working on that, but Plex doesn't like my idea very much.
