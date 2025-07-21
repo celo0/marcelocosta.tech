@@ -1,0 +1,54 @@
+baseURL = "https://www.marcelocosta.tech/"
+languageCode = "en-us"
+title = "Marcelo Costa"
+theme = "nightfall"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[menu]
+  [[menu.header]]
+    name = "blog"
+    weight = 0
+    url = "blog"
+  [[menu.header]]
+    name = "about"
+    weight = 1
+    url = "about"
+
+[params]
+  user = "celo0"
+  hostname = "marcelocosta.tech"
+    [params.author]
+        name = "Marcelo Costa"
+        email = "contactme@marcelocosta.tech"
+
+readingTime = true  # Show reading time on post page
+published = true  # Show published data on post page
+
+[[params.social]]
+key = 0
+name = "github"
+url = "https://github.com/celo0"
+target = "_blank"
+aria = "GitHub Profile"
+
+[[params.social]]
+key = 1
+name = "twitter"
+url = "https://x.com/celotv_"
+aria = "Twitter Profile"
+
+[[params.social]]
+key = 2
+name = "linkedin"
+url = "https://www.linkedin.com/in/mbpcosta/"
+aria = "LinkedIn Profile"
+
+[[params.social]]
+key = 3
+name = "email"
+url = "mailto:contactme@marcelocosta.tech"
+aria = "My e-Mail Address"
