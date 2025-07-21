@@ -6,7 +6,7 @@ description: "Nginx subfiltering files"
 ---
 
 I started hosting my own media using plex, and I didn't wanted to have one url for each service, so I thought:
-
+<!--more-->
 _'Why don't I put everything under media.mydomain.com?'_
 
 Then I started working on that, but Plex doesn't like my idea very much.
