@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Marcelo Costa</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content on Marcelo Costa</description>
+    <title>Devsecops on Marcelo Costa</title>
+    <link>http://localhost:1313/tags/devsecops/</link>
+    <description>Recent content in Devsecops on Marcelo Costa</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <managingEditor>contactme@marcelocosta.tech (Marcelo Costa)</managingEditor>
     <webMaster>contactme@marcelocosta.tech (Marcelo Costa)</webMaster>
     <lastBuildDate>Mon, 21 Jul 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Fixing Reverse Proxy for Plex with Nginx</title>
-      <link>http://localhost:1313/blog/nginx-media/</link>
-      <pubDate>Mon, 21 Jul 2025 00:00:00 +0000</pubDate><author>contactme@marcelocosta.tech (Marcelo Costa)</author>
-      <guid>http://localhost:1313/blog/nginx-media/</guid>
-      <description>&lt;p&gt;When reverse proxying Plex under a subdomain, the UI often breaks. Here&amp;rsquo;s how I fixed it using proper headers and WebSocket support&amp;hellip;&lt;/p&gt;</description>
-    </item>
+    <atom:link href="http://localhost:1313/tags/devsecops/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Implementing SAST and SCA on gitlab ci</title>
       <link>http://localhost:1313/blog/gitlab-ci/</link>
