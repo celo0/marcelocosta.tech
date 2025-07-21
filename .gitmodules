@@ -1,6 +1,0 @@
-[submodule "blog/blog/themes/archie"]
-	path = blog/blog/themes/archie
-	url = https://github.com/athul/archie.git
-[submodule "blog/themes/archie"]
-	path = blog/themes/archie
-	url = https://github.com/athul/archie.git
