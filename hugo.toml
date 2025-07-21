@@ -35,7 +35,6 @@ published = true  # Show published data on post page
 key = 0
 name = "github"
 url = "https://github.com/celo0"
-icon = "fa-brands fa-github"
 target = "_blank"
 aria = "GitHub Profile"
 
@@ -43,19 +42,16 @@ aria = "GitHub Profile"
 key = 1
 name = "twitter"
 url = "https://x.com/celotv_"
-icon = "fa-brands fa-x-twitter"
 aria = "Twitter Profile"
 
 [[params.social]]
 key = 2
 name = "linkedin"
 url = "https://www.linkedin.com/in/mbpcosta/"
-icon = "fa-brands fa-linkedin"
 aria = "LinkedIn Profile"
 
 [[params.social]]
 key = 3
 name = "email"
 url = "mailto:contactme@marcelocosta.tech"
-icon = "fa-regular fa-envelope"
 aria = "My e-Mail Address"
