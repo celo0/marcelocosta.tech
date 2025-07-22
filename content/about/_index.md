@@ -16,10 +16,8 @@ Currently working at HMIT, building secure and scalable environments for financi
 
 ## 🧾 Profile
 
-- **Full Name:** Marcelo Borges Pereira da Costa  
-- **Birth Date:** June 26, 1992  
-- **Job:** Infrastructure Analyst, Network Engineer, DevSecOps
-- **Website:** [www.marcelocosta.tech](https://www.marcelocosta.tech)  
+- Marcelo Borges Pereira da Costa | 33 years  
+- Infrastructure Analyst | Network Engineer | DevSecOps
 - **Email:** [contactme@marcelocosta.tech](mailto:contactme@marcelocosta.tech)
 
 ---

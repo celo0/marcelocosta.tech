@@ -15,7 +15,7 @@
       <link>http://localhost:1313/blog/nginx-media/</link>
       <pubDate>Mon, 21 Jul 2025 00:00:00 +0000</pubDate><author>contactme@marcelocosta.tech (Marcelo Costa)</author>
       <guid>http://localhost:1313/blog/nginx-media/</guid>
-      <description>&lt;p&gt;When reverse proxying Plex under a subdomain, the UI often breaks. Here&amp;rsquo;s how I fixed it using proper headers and WebSocket support&amp;hellip;&lt;/p&gt;</description>
+      <description>&lt;p&gt;I started hosting my own media using plex, and I didn&amp;rsquo;t wanted to have one url for each service, so I thought:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

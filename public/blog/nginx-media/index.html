@@ -3,12 +3,12 @@
 
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <title>
-Fixing Reverse Proxy for Plex with Nginx | Marcelo Costa
+Self-Hosting Plex Under One Domain with Nginx (The Real Fix) | Marcelo Costa
 </title>
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="Work resume for Marcelo Costa">
 
 <meta name="generator" content="Hugo 0.148.1">
 
@@ -18,7 +18,7 @@ Fixing Reverse Proxy for Plex with Nginx | Marcelo Costa
 
 
 
-<link href="/css/style.min.5c1fa9bba2d0e854fe30b3d6316ab0114a2a5f25c9a98275badeadb66f2ec725.css" rel="stylesheet">
+<link href="/css/style.min.3651cb95c72ce13c6a5cbb9a059fc4da0014d2580cb70d8f507f4bb73954293a.css" rel="stylesheet">
 
 
 
@@ -60,7 +60,7 @@ Fixing Reverse Proxy for Plex with Nginx | Marcelo Costa
             <main class="main">
                 
 <div class="postWrapper">
-    <h1>Fixing Reverse Proxy for Plex with Nginx</h1>
+    <h1>Self-Hosting Plex Under One Domain with Nginx (The Real Fix)</h1>
     
     
     <section class="postMetadata">
@@ -71,7 +71,13 @@ Fixing Reverse Proxy for Plex with Nginx | Marcelo Costa
 <dd><span></span>
     <a href="/tags/nginx/">#Nginx</a><span></span>
     <a href="/tags/plex/">#Plex</a><span></span>
-    <a href="/tags/reverse-proxy/">#Reverse-Proxy</a></dd>
+    <a href="/tags/reverse-proxy/">#Reverse-Proxy</a><span></span>
+    <a href="/tags/self-hosting/">#Self-Hosting</a><span></span>
+    <a href="/tags/home-lab/">#Home Lab</a><span></span>
+    <a href="/tags/media-server/">#Media Server</a><span></span>
+    <a href="/tags/sub_filter/">#Sub_filter</a><span></span>
+    <a href="/tags/sri/">#Sri</a><span></span>
+    <a href="/tags/nginx-config/">#Nginx Config</a></dd>
             
             
             
@@ -88,8 +94,34 @@ Fixing Reverse Proxy for Plex with Nginx | Marcelo Costa
     </section>
     
     <div>
-        <p>When reverse proxying Plex under a subdomain, the UI often breaks. Here&rsquo;s how I fixed it using proper headers and WebSocket support&hellip;</p>
-
+        <p>I started self-hosting my media using Plex, and I didn’t want a different URL for every service. So I thought:</p>
+<blockquote>
+<p><em>&ldquo;Why not just put everything under <code>media.mydomain.com</code>?&rdquo;</em></p></blockquote>
+<p>Simple idea. Plex, however, didn’t agree.</p>
+<p>I began setting up Nginx to reverse proxy everything under subpaths like <code>/plex/</code>, but Plex was stubborn. After a lot of trial and error, I finally found a workaround:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#66d9ef">location</span> <span style="color:#e6db74">/plex/</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">rewrite</span> <span style="color:#e6db74">/plex(/.*)</span> $1 <span style="color:#e6db74">break</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">proxy_pass</span> <span style="color:#e6db74">http://192.168.1.10:32400/web/</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">proxy_http_version</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">.1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">Accept-Encoding</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">Upgrade</span> $http_upgrade;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">Connection</span> <span style="color:#e6db74">&#39;upgrade&#39;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">Host</span> $http_host;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">proxy_cache_bypass</span> $http_upgrade;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Real-IP</span> $remote_addr;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Forwarded-For</span> $proxy_add_x_forwarded_for;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Forwarded-Proto</span> $scheme;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">proxy_redirect</span> <span style="color:#66d9ef">off</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">sub_filter</span> <span style="color:#e6db74">&#39;/web/&#39;</span> <span style="color:#e6db74">&#39;/plex/web/&#39;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">sub_filter_types</span> <span style="color:#e6db74">html</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">sub_filter_once</span> <span style="color:#66d9ef">off</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The <code>sub_filter</code> directive saved my setup. Plex hardcodes <code>/web/</code> all over the place, and I needed to rewrite it to <code>/plex/web/</code>. That worked — until Plex pushed an update.</p>
+<p>Turns out, Plex uses <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity">Subresource Integrity (SRI)</a>, and my filters were breaking the integrity of JS and CSS files. The fix? I added this line:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#66d9ef">sub_filter_types</span> <span style="color:#e6db74">html</span>;
+</span></span></code></pre></div><p>This tells Nginx to only apply the substitution to HTML files, leaving the JS and CSS untouched. That did the trick.</p>
+<p>If you want to check out the full <code>nginx.conf</code>, it’s on my GitHub:<br>
+👉 <a href="https://github.com/celo0/nginx-media">nginx-media</a></p>
     </div>
 </div>
 
